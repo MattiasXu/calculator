@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100&display=swap');
+html {
+    font-family: "Exo 2", sans-serif;
+    background-color: white;
+}
+
+.calculator {
+    height: 60vh;
+    max-width: 400px;
+    max-height: 800px;
+    margin: auto;    
+    border: 3px solid #a3a3a3;
+    padding: 5vh 5vh 5vh 5vh;
+    border-radius: 25px;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    border: solid 3px #a3a3a3;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    font-size: 50px;
+    justify-content: center;
+    padding: 20px 20px 20px 20px;
+    align-items: flex-end;
+    height: 120px;
+}
+
+#prev {
+    color: #7d7d7d;
+    height: 60px;
+}
+
+#current {
+    height: 60px;
+}
+
+button {
+    background-color: transparent;
+    border: solid 3px #a3a3a3;
+    width: 100%;
+    border-radius: 25px;
+    font: inherit;
+    font-size: 4vmin;
+    animation: not-selected 0.3s forwards;
+}
+
+@media (hover: hover) { button:hover {
+        animation: selected 0.3s forwards;
+        outline: transparent;
+    }
+}
+
+button:focus {
+    outline: transparent;
+}
+
+.pressed {
+    animation: selected 0.3s;
+}
+
+.buttons {
+    display: grid;
+    grid-template-areas: 
+        "AC back plusminus division"
+        "seven eight nine times"
+        "four five six minus"
+        "one two three plus"
+        "zero point equals equals";
+    row-gap: 10px;
+    column-gap: 10px;
+    height: 40vh;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@keyframes selected {
+    from {background-color: inherit;}
+    to {background-color: #808080;}
+}
+
+@keyframes not-selected {
+    from {background-color: #808080;}
+    to {background-color: inherit;}
+}
+
+#one {
+    grid-area: one;
+}
+
+#two {
+    grid-area: two;
+}
+
+#three {
+    grid-area: three;
+}
+
+#four {
+    grid-area: four;
+}
+
+#five {
+    grid-area: five;
+}
+
+#six {
+    grid-area: six;
+}
+
+#seven {
+    grid-area: seven;
+}
+
+#eight {
+    grid-area: eight;
+}
+
+#nine {
+    grid-area: nine;
+}
+
+#zero {
+    grid-area: zero;
+}
+
+#plus {
+    grid-area: plus;
+}
+
+#minus {
+    grid-area: minus;
+}
+
+#times {
+    grid-area: times;
+}
+
+#division {
+    grid-area: division;
+}
+
+#equals {
+    grid-area: equals;
+}
+
+#back {
+    grid-area: back;
+}
+
+#AC {
+    grid-area: AC;
+}
+
+body.preload *{
+    animation-duration: 0s !important;
+}

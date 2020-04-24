@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="preload">
+    <h1 style="text-align: center; font-size: 50px;">Calculator</h1>
+    <h2 style="text-align: center;"> Keyboard enabled, press enter for =, p for ^, del for AC</h2>
+    <div class="calculator">
+        <div class="display">
+            <div id="prev"></div>
+            <div id="current"></div>
+        </div>
+        <div class="buttons">
+            <button id="one">1</button>
+            <button id="two">2</button>
+            <button id="three">3</button>
+            <button id="four">4</button>
+            <button id="five">5</button>
+            <button id="six">6</button>
+            <button id="seven">7</button>
+            <button id="eight">8</button>
+            <button id="nine">9</button>
+            <button id="zero">0</button>
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+            <button id="times">&times;</button>
+            <button id="division">&divide;</button>
+            <button id="equals">=</button>
+            <button id="back">&lArr;</button>
+            <button id="AC">AC</button>
+            <button id="power">^</button>
+            <button id="point">.</button>
+        </div>
+    </div>
+</body>
+<script src="functions.js"></script>
+<script>
+    // Remove preload class from body, which disables animation on pageload.
+    setTimeout(function(){
+        document.body.className="";
+    },500);
+
+    let mainDisplay = "";
+    let lastDisplay = "";
+    let operatorCount = 0;
+
+    // Adding eventlisteners to all buttons
+    const buttons = document.querySelector(".buttons").children;
+    for (let i=0; i<buttons.length; i++) {
+        buttonfunction = buttonclick(buttons[i].textContent);
+        buttons[i].addEventListener("click", buttonfunction);
+        buttons[i].addEventListener("click", (e) => {
+            buttons[i].classList.add("pressed");
+        });
+        buttons[i].addEventListener("animationend", (e) => {
+            buttons[i].classList.remove("pressed");
+        });
+    }
+
+    // Adding keyboard support
+    document.addEventListener('keydown', (e) => {
+        let button = findID(e.key);
+        if (button !== "invalid") {
+            const pressed = document.querySelector(`#${button}`);
+            pressed.click();
+            pressed.classList.add("pressed");
+        }
+    });
+</script>
+</html>
